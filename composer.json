@@ -1,9 +1,9 @@
 {
-  "name": "akyos/theme-access-belmont-pret-a-porter",
+  "name": "akyos/theme-belmont",
   "type": "wordpress-theme",
   "license": "MIT",
-  "description": "Thème parent Access access-belmont-pret-a-porter (Sage / Acorn / Vite)",
-  "homepage": "https://github.com/akyoscommunication/theme-access-belmont-pret-a-porter",
+  "description": "Thème parent Access Belmont (Sage / Acorn / Vite)",
+  "homepage": "https://github.com/akyoscommunication/theme-belmont",
   "authors": [
     {
       "name": "Akyos Communication",
@@ -19,8 +19,8 @@
     "access"
   ],
   "support": {
-    "issues": "https://github.com/akyoscommunication/theme-access-belmont-pret-a-porter/issues",
-    "source": "https://github.com/akyoscommunication/theme-access-belmont-pret-a-porter"
+    "issues": "https://github.com/akyoscommunication/theme-belmont/issues",
+    "source": "https://github.com/akyoscommunication/theme-belmont"
   },
   "autoload": {
     "psr-4": {
