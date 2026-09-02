@@ -1,0 +1,7 @@
+.s-archive {
+  padding-top: rem(66);
+
+  @include lessThan($mobileXs) {
+    padding-top: rem(40);
+  }
+}

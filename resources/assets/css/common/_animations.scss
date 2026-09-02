@@ -1,0 +1,65 @@
+[animation-mask] {
+  mask-image: linear-gradient(90deg, #fff 33.33%, transparent 66.66%);
+  mask-size: 0 100%;
+  mask-repeat: no-repeat;
+  transition-delay: 0.2s;
+  transition-duration: 3s;
+  transition-timing-function: $cubic-transition;
+  transition-property: mask-size;
+  display: inline-block;
+}
+
+.animation-mask {
+  &--active {
+    mask-size: 300% 100%;
+  }
+}
+
+
+[animation-wipe] {
+  @extend .animation-wipe;
+}
+
+.animation-wipe {
+  mask-image: linear-gradient(0deg, #fff 66.66%, transparent 100%);
+  mask-size: 300% 0;
+  mask-repeat: no-repeat;
+  mask-position: bottom;
+  transition-delay: 0.2s;
+  transition-duration: 2s;
+  transition-timing-function: $cubic-transition;
+  transition-property: mask-size;
+  &--active {
+    mask-size: 300% 150%;
+  }
+}
+
+[animation-translate="bottom"] {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 1.5s $cubic-transition, transform 1.5s $cubic-transition;
+}
+
+.animation-translate-bottom {
+  &--active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes zoom-out {
+  0% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+[animation-background] {
+  transition: background-color 0.5s linear;
+}
+

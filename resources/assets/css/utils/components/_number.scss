@@ -1,0 +1,22 @@
+.c-number {
+  @include flex(column, nowrap, center, center);
+
+  gap: rem(28);
+  padding: rem(54) rem(21);
+  text-align: center;
+  border-radius: rem(25);
+
+  &__title {
+    @extend %fs-59;
+
+    font-weight: 400;
+    font-family: "Nohemi", sans-serif;
+    line-height: 1.4;
+  }
+
+  .c-image {
+    img {
+      // filter: brightness(0);
+    }
+  }
+}

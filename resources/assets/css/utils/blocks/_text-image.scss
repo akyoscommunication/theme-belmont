@@ -1,0 +1,114 @@
+.s-text-image {
+
+  padding: rem(80) 0;
+  color: color(text-background_body);
+
+  &[animation-background="bg-color-primary"] {
+    color: color(text-primary);
+  }
+
+  &[animation-background="bg-color-secondary"] {
+    color: color(text-secondary);
+  }
+
+  > .container {
+    display: grid;
+    grid-template-columns: 4fr 1fr 7fr;
+    grid-template-areas: "text blank images";
+    grid-gap: rem(20);
+    align-items: center;
+
+    &.reverse {
+      grid-template-columns: 7fr 1fr 4fr;
+      grid-template-areas: "images blank text";
+    }
+
+    &:has(.s-text-image-wrapper:only-child) {
+      grid-template-columns: 1fr;
+
+      .s-text-image-wrapper {
+        grid-area: auto;
+      }
+    }
+
+    @include lessThan($tablet) {
+      grid-template-columns: 6fr 6fr !important;
+      grid-template-areas: "images text" !important;
+      grid-gap: rem(40);
+    }
+
+    @include lessThan($mobile) {
+      @include flex(column-reverse, nowrap, center, center);
+    }
+  }
+
+  &-wrapper {
+    position: relative;
+
+    &:nth-child(1) {
+      @include flex(column, nowrap, center,start);
+
+      grid-area: text;
+      gap: rem(32);
+
+      p a {
+        text-decoration: underline;
+      }
+    }
+
+    &:nth-child(2) {
+      grid-area: images;
+      display: grid;
+      grid-template-columns: 4fr 3fr;
+      align-items: end;
+      grid-column-gap: rem(20);
+
+      @include lessThan($tablet) {
+        grid-template-columns: 1fr;
+        grid-row-gap: rem(20);
+      }
+
+      @include lessThan($mobile) {
+        display: grid;
+        grid-template-columns: 6fr 6fr;
+      }
+
+      div {
+        &:only-child {
+          grid-column: 1 / -1;
+          .c-image {
+            height: rem(600) !important;
+            @include lessThan($mobileXs) {
+              height: auto !important;
+              img {
+                object-fit: contain;
+              }
+            }
+          }
+        }
+        &:first-child {
+          .c-image {
+            height: rem(600);
+            @include lessThan($tablet) {
+              height: rem(300);
+            }
+            @include lessThan($mobileXs) {
+              height: rem(200);
+            }
+          }
+        }
+        &:last-child {
+          .c-image {
+            height: rem(450);
+            @include lessThan($tablet) {
+              height: rem(300);
+            }
+            @include lessThan($mobileXs) {
+              height: rem(200);
+            }
+          }
+        }
+      }
+    }
+  }
+}

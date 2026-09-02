@@ -1,0 +1,156 @@
+@import "social";
+
+$dropdown-icon: $assets-path + "/icons/dropdown.svg";
+
+.header-wrap {
+  grid-area: header;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  transition: background 0.3s $cubic-transition;
+  color: color(background_body);
+
+  @include lessThan($tablet) {
+    padding: rem(15) 0;
+  }
+
+  &:has(.sub-menu.open) {
+    .menu-item:has(.sub-menu) {
+      &::before {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  &:has(.is-active) {
+
+    background-color: color(primary);
+
+    .header {
+      &-brand {
+        position: relative;
+        z-index: 999;
+        .c-image {
+          img {
+            //filter: brightness(0)invert(1);
+          }
+        }
+      }
+    }
+  }
+
+  .header {
+    @include flex(row, nowrap, space-between, center);
+
+    &-brand {
+      .c-image {
+        max-width: rem(90);
+      }
+    }
+
+    &-button {
+      @include lessThan($tablet) {
+        display: none;
+      }
+    }
+
+    &-nav {
+
+      margin-left: auto;
+
+      &__nav {
+
+        @include lessThan($tablet) {
+          display: none;
+        }
+
+        .menu {
+          @include flex(row, nowrap, flex-end, center);
+          @include undoListStyles;
+
+          gap: rem(61);
+
+          > li {
+            padding: rem(30) 0;
+
+            &:not(&:has(.sub-menu)) {
+              a {
+                background-position: 100% 100%;
+                background-size: 0 rem(2);
+                background-image: linear-gradient(color(background_body), color(background_body));
+                background-repeat: no-repeat;
+                transition: background-size 0.3s $cubic-transition;
+
+                &:hover {
+                  background-position: 0 100%;
+                  background-size: 100% rem(2);
+                }
+              }
+            }
+
+            &.current-menu-item {
+              a {
+                font-weight: 700;
+                background-position: 0 100%;
+                background-size: 100% rem(2);
+              }
+            }
+
+          }
+
+          li {
+            a {
+              @extend %fs-16;
+
+              font-weight: 300;
+              white-space: nowrap;
+            }
+
+            &:has(.sub-menu) {
+              @include withIcon($dropdown-icon, 'right');
+
+              position: relative;
+            }
+
+          }
+
+          &#menu-menu-principal {
+            .sub-menu {
+              @include undoListStyles;
+              @include horizontalCenter();
+
+              background-color: color(text-background_body);
+              position: absolute;
+              height: 0;
+              opacity: 0;
+              padding: rem(20) 0;
+              overflow: hidden;
+              top: 80%;
+              transition: $default-transition;
+
+              li {
+                a {
+                  display: inline-block;
+                  padding: rem(8) rem(20);
+                  transition: $default-transition;
+                  color: color(background_body);
+                  &:hover {
+                    text-shadow: 0 0 1px;
+                  }
+                }
+              }
+
+            }
+          }
+
+        }
+      }
+    }
+  }
+
+  &.scrolled {
+    background: color(text-background_body);
+    color: color(background_body);
+  }
+}

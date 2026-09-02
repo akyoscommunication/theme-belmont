@@ -1,0 +1,115 @@
+#burger {
+  display: none;
+  position: relative;
+  height: 50px;
+  z-index: 9;
+  padding: rem(20);
+
+  @include lessThan($tablet) {
+    @include flex(row, nowrap, flex-end, center);
+  }
+
+  span {
+    @include burger(30px, 2px, 7px, var(--aky-color-light));
+  }
+}
+
+.header-nav__mobile {
+
+  &.is-active {
+    .mobile-menu {
+      mask-size: 300% 100%;
+      pointer-events: all;
+    }
+
+    #burger {
+      span {
+        @include burger-to-cross(var(--aky-color-background_body));
+      }
+    }
+  }
+
+  .mobile-menu {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: color(background_body);
+    color: color(text-background_body);
+    padding: rem(150) 0 rem(131) rem(61);
+
+    mask-image: linear-gradient(90deg, #fff 33.33%, transparent 66.66%);
+    mask-size: 300% 0;
+    mask-repeat: no-repeat;
+    transition-duration: .5s;
+    transition-timing-function: $cubic-transition;
+    transition-property: mask-size;
+    pointer-events: none;
+
+    .c-socials {
+      justify-content: start;
+      padding-top: rem(60);
+    }
+
+  }
+
+  .menu {
+    @include undoListStyles;
+    @include flex(column, nowrap, flex-start, start);
+
+    gap: rem(48);
+
+    li {
+      &.current-menu-item {
+        a {
+          font-weight: 700;
+        }
+      }
+
+      a {
+        font-size: rem(20);
+        color: color(text-background_body);
+      }
+
+      &:has(.sub-menu) {
+        position: relative;
+        overflow: hidden;
+
+        > a {
+          &:after {
+            content: url($dropdown-icon);
+            margin-left: rem(10);
+            filter: brightness(0) invert(1);
+          }
+        }
+
+        .sub-menu {
+          @include undoListStyles;
+
+          height: 0;
+
+          li {
+            a {
+              font-size: rem(17);
+              display: inline-block;
+              padding: rem(10) rem(20) rem(5) rem(20);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.scrolled {
+  #burger {
+    span {
+      background-color: color(text-background_body);
+      &:after, &:before {
+        background-color: color(text-background_body);
+      }
+    }
+  }
+}

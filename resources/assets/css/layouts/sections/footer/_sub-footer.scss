@@ -1,0 +1,47 @@
+.sub-footer {
+  background-color: color(primary);
+  color: color(text-primary);
+  width: 100%;
+  margin: rem(100) auto auto auto;
+  padding: rem(71) rem(0) rem(46) rem(0);
+  position: relative;
+
+  @include lessThan($laptop) {
+    padding: rem(56) rem(60);
+
+    .c-title {
+      text-align: center;
+      margin: auto;
+    }
+
+    .btn {
+      margin-inline: auto;
+      margin-top: rem(20);
+    }
+  }
+
+  @include lessThan($mobile) {
+    padding: rem(32) rem(16);
+  }
+
+  &-inner {
+    @include flex(row, nowrap, space-between, start);
+
+    padding: 0 rem(100);
+
+    @include lessThan($mobile) {
+      flex-direction: column;
+      padding: 0;
+    }
+  }
+
+  .c-title {
+    @extend %fs-33;
+
+    position: relative;
+
+    &::after {
+      content: none;
+    }
+  }
+}

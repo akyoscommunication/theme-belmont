@@ -1,0 +1,90 @@
+h1, h2, h3 {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family-title;
+  text-wrap: balance;
+}
+
+h1 {
+  @extend %fs-42;
+  font-weight: normal;
+}
+
+h3 {
+  @extend %fs-26;
+  font-weight: normal;
+}
+
+h4 {
+  @extend %fs-20;
+  font-weight: normal;
+}
+
+h2 {
+  @extend %fs-33;
+
+  position: relative;
+  font-weight: normal;
+  padding-left: rem(44);
+
+  &::before {
+    @include pseudo();
+
+    top: rem(16);
+    left: 0;
+    width: rem(36);
+    height: rem(2);
+    background-color: color(text-background_body);
+  }
+
+  @include lessThan($mobile) {
+    padding-left: 0;
+    &::before {
+      content: none;
+    }
+  }
+}
+
+.c-title {
+  span {
+    font-family: $font-italic;
+    font-weight: normal;
+  }
+}
+
+.text-center {
+  .c-title {
+    padding-left: 0;
+    padding-bottom: rem(6);
+
+    &::before {
+      @include horizontalCenter();
+
+      bottom: 0;
+      top: auto;
+      width: rem(36);
+    }
+  }
+}
+
+.c-title.text-right {
+  text-align: right;
+
+  &::after {
+    right: 0;
+  }
+}
+
+.bg-color-primary {
+  h2::before {
+    background-color: color(text-primary);
+  }
+}
+
+.bg-color-secondary {
+  h2::before {
+    background-color: color(text-secondary);
+  }
+}
+
+

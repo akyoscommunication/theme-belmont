@@ -1,0 +1,103 @@
+.s-reviews {
+  color: color(text-background_body);
+
+  &[animation-background="bg-color-primary"] {
+    color: color(text-primary);
+  }
+
+  &[animation-background="bg-color-secondary"] {
+    color: color(text-secondary);
+  }
+
+  padding: clamp-calc(40px, 90px) 0;
+
+  &__header {
+    text-align: center;
+  }
+
+  > .container > .c-title,
+  &__header > .c-title {
+    margin-inline: auto;
+    color: color(dark);
+  }
+
+  &__text {
+    text-align: center;
+    margin-top: rem(8);
+    color: color(text-background_body);
+  }
+
+  &__aggregate {
+    justify-content: center;
+  }
+
+  &-list {
+    margin-top: rem(64);
+
+    .slider--reviews {
+      position: relative;
+
+      @include moreThan($mobileXs) {
+        margin: 0 rem(-40);
+      }
+
+      @include lessThan($laptop) {
+        padding-bottom: rem(80);
+      }
+
+      .swiper-buttons {
+        @include flex(row, nowrap, space-between, center);
+        @include verticalCenter();
+
+        width: 100%;
+        margin-top: 0;
+        z-index: 10;
+        position: absolute;
+
+        @include lessThan($laptop) {
+          top: auto;
+          justify-content: center;
+          bottom: rem(-20);
+        }
+
+        svg {
+          color: color(dark);
+        }
+      }
+    }
+  }
+
+  &-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: color(background_body);
+    color: color(dark);
+    border: rem(1) solid rgba(var(--aky-color-dark--rgb, 35, 35, 35), 0.1);
+
+    &__avatar img {
+      width: rem(100);
+      height: rem(100);
+    }
+
+    &__meta {
+      justify-content: center;
+    }
+  }
+}
+
+.s-reviews[animation-background="bg-color-primary"] {
+  > .container > .c-title,
+  .s-reviews__header > .c-title,
+  .s-reviews__text {
+    color: color(text-primary);
+  }
+}
+
+#app.bg-color-primary .s-reviews {
+  > .container > .c-title,
+  .s-reviews__header > .c-title,
+  .s-reviews__text {
+    color: color(dark);
+  }
+}

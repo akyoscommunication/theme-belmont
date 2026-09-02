@@ -1,0 +1,31 @@
+.c-socials {
+  @include undoListStyles;
+  @include flex(row, nowrap, center, center);
+
+  gap: rem(14);
+
+  li {
+    .btn {
+      @include flex(row, nowrap, center, center);
+
+      width: rem(34);
+      height: rem(34);
+      border-radius: 50%;
+    }
+  }
+}
+
+#social {
+  opacity: 0;
+  position: fixed;
+  bottom: rem(-20);
+  right: rem(20);
+  transition: all 0.3s linear;
+  .c-socials {
+    li {
+      .btn {
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      }
+    }
+  }
+}

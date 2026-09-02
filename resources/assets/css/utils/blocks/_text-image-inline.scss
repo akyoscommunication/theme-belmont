@@ -1,0 +1,114 @@
+.s-text-image-inline {
+
+  padding: clamp-calc(40px, 90px) 0;
+
+  &[animation-background="bg-color-primary"] {
+    color: color(text-primary);
+  }
+
+  &[animation-background="bg-color-secondary"] {
+    color: color(text-secondary);
+  }
+
+  &-row {
+    display: grid;
+    align-items: center;
+    padding-top: rem(40);
+
+    @include lessThan($tablet) {
+      grid-template-columns: 6fr 6fr !important;
+      grid-template-areas: "left right" !important;
+      grid-gap: rem(40);
+    }
+
+    @include lessThan($mobile) {
+      grid-template-areas: none !important;
+      grid-template-columns: 1fr !important;
+      grid-row-gap: rem(40);
+    }
+
+    &:has(.s-text-image-inline-wrapper:only-child) {
+      grid-template-columns: 1fr;
+
+      .s-text-image-wrapper {
+        grid-area: auto;
+      }
+    }
+
+    &.default {
+      grid-template-columns: 6fr 1fr 4fr 1fr;
+      grid-template-areas: "left blank right blank2";
+    }
+
+    &.reverse {
+      grid-template-columns: 1fr 4fr 1fr 6fr;
+      grid-template-areas: "blank left blank2 right";
+
+      .s-text-image-inline-wrapper--text {
+        grid-area: right;
+      }
+
+      .s-text-image-inline-wrapper--image {
+        grid-area: left;
+      }
+    }
+
+  }
+
+  &-wrapper {
+
+    &--image {
+      grid-area: right;
+      min-width: 0;
+
+      @include lessThan($mobile) {
+        grid-area: auto !important;
+      }
+
+      .c-image {
+        height: rem(552);
+
+        @include lessThan($mobileXs) {
+          height: auto;
+        }
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+
+          @include lessThan($mobileXs) {
+            object-fit: contain;
+          }
+        }
+      }
+    }
+
+    &--text {
+      @include flex(column, nowrap, start, start);
+
+      grid-area: left;
+
+      @include lessThan($mobile) {
+        grid-area: auto !important;
+      }
+
+      > * {
+        margin-bottom: rem(12);
+      }
+
+      h2,h3 {
+        margin-bottom: rem(24);
+      }
+
+      .btn {
+        margin-top: rem(24);
+      }
+
+      p a {
+        text-decoration: underline;
+      }
+
+    }
+  }
+}

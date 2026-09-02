@@ -1,0 +1,60 @@
+.s-services {
+  padding: rem(32) 0 clamp-calc(70px, 137px) 0;
+  position: relative;
+  z-index: 1;
+
+  > .container {
+    position: relative;
+
+    > .c-title {
+      width: fit-content;
+    }
+
+    .s-services {
+
+      &-list {
+        position: relative;
+        z-index: 1;
+        margin-top: rem(48);
+
+        &-wrapper {
+          @include flex(row, wrap, center, center);
+
+          margin-top: rem(48);
+          grid-gap: rem(24);
+
+          @include lessThan($tablet) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+          }
+
+          @include lessThan($mobile) {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        .c-card {
+          .c-image {
+            &::before {
+              @extend %imageOverlay;
+
+              background-color: color(dark, 0.5);
+              z-index: 1;
+            }
+          }
+        }
+
+      }
+    }
+
+    .btn {
+      margin-top: rem(48);
+
+      &--absolute {
+        position: absolute;
+        bottom: rem(-20);
+        z-index: 1;
+      }
+    }
+  }
+}

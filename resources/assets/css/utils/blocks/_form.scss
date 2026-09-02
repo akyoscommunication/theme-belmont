@@ -1,0 +1,80 @@
+.s-form {
+
+  margin-top: rem(42);
+  padding: rem(64) 0;
+
+  > .container {
+    padding-top: rem(36);
+    display: grid;
+    grid-template-columns: 6fr 6fr;
+    grid-template-areas: "left right";
+    grid-gap: rem(20);
+
+    @include lessThan(laptop) {
+      @include flex(column, nowrap, center, stretch);
+    }
+
+  }
+
+  &-wrapper {
+    &:nth-child(1) {
+
+      grid-area: left;
+      .c-image {
+        height: rem(246);
+
+        img {
+          object-fit: cover;
+          object-position: center;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      grid-area: right;
+    }
+
+  }
+
+  &-infos {
+    @include flex(row, wrap, space-between, start);
+
+    margin-bottom: rem(48);
+    gap: rem(30);
+
+    @include lessThan(mobileonly) {
+      gap: rem(20);
+      justify-content: center;
+      text-align: center;
+    }
+
+    a {
+      @include flex(row, nowrap, start, center);
+
+      padding-bottom: rem(16);
+      gap: rem(8);
+    }
+  }
+
+  .c-socials {
+    margin-top: rem(8);
+    justify-content: end;
+    gap: rem(8);
+
+    @include lessThan(mobileonly) {
+      justify-content: center;
+    }
+
+    &__item {
+      a {
+        border-radius: 50% !important;
+        width: rem(34) !important;
+        height: rem(34) !important;
+        padding-bottom: rem(0) !important;
+      }
+    }
+  }
+
+}

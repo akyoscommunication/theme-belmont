@@ -1,0 +1,24 @@
+.s-last-news {
+  padding: clamp-calc(40px, 90px) 0 0 0;
+
+  &__text {
+    margin-top: rem(8);
+  }
+
+  &-posts {
+    @include grid(4, 20);
+    @include gridMd(3, 20);
+    @include gridSm(2, 20);
+    @include gridXs(1, 20);
+
+    margin-top: rem(46);
+    grid-column-gap: rem(20);
+    grid-row-gap: rem(24);
+
+  }
+
+  &-btn {
+    margin-inline: auto;
+    margin-top: rem(48);
+  }
+}

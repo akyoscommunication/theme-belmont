@@ -1,0 +1,109 @@
+.s-gallery {
+
+  padding: clamp-calc(40px, 120px) 0;
+
+  > .container {
+    > .c-title {
+      width: fit-content;
+    }
+  }
+
+  &__text {
+    margin-top: rem(8);
+  }
+
+  &-grid {
+    margin-top: rem(32);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, minmax(0, 30vh));
+    grid-gap: rem(20);
+    grid-template-areas:
+      "img1 img2 img4"
+      "img1 img3 img4"
+      "img5 img6 img6";
+
+    @include lessThan($tablet) {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+      grid-template-areas: none !important;
+      > * {
+        grid-area: auto !important;
+      }
+    }
+
+    @include lessThan($mobileXs) {
+      grid-template-columns: 1fr !important;
+      grid-template-areas: none !important;
+    }
+
+    &:not(&:has(> *:nth-child(4))) {
+      grid-template-columns: 6fr 6fr;
+      grid-template-areas:
+        "img1 img2"
+        "img1 img3";
+    }
+
+    &:not(&:has(> *:nth-child(3))) {
+      grid-template-columns: 6fr 6fr;
+      grid-template-areas:
+        "img1 img2"
+        "img1 img2";
+    }
+
+    &:not(&:has(> *:nth-child(2))) {
+      grid-template-columns: 12fr;
+      grid-template-areas:
+        "img1"
+        "img1";
+    }
+
+    > * {
+      &:nth-child(1) {
+        grid-area: img1;
+      }
+      &:nth-child(2) {
+        grid-area: img2;
+      }
+      &:nth-child(3) {
+        grid-area: img3;
+      }
+      &:nth-child(4) {
+        grid-area: img4;
+      }
+    }
+
+    .c-image {
+      position: relative;
+      height: 100%;
+      cursor: pointer;
+
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        transform: scale(1.001);
+        transition: 0.6s $cubic-transition;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0);
+        transition: background .7s $cubic-transition;
+      }
+
+      &:hover {
+        &:after {
+          background: rgba(0, 0, 0, 0.4);
+        }
+
+        img {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+}
